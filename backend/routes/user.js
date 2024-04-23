@@ -60,8 +60,21 @@ userRouter.get('/bulk',authMiddleware,async(req,res)=>{
     })
 
     res.send(
-        users.map( user=> ({username:user.username, fname: user.fname, lname: user.lname, id:user._id}))
+        users.map( user=> ({username:user.username, fname: user.fname, lname: user.lname, id:user._id})).filter(user=> user.id != req.userId)
     )
+})
+
+userRouter.get('/getinfo',authMiddleware,async(req,res)=>{
+    const userId = req.userId;
+    const response = await userModel.findOne({_id:userId});
+    const user = {
+        id:response._id,
+        fname:response.fname,
+        lname:response.lname
+    }
+    res.json({
+        user
+    })
 })
 
 module.exports = userRouter;
