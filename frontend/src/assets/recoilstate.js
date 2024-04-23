@@ -10,3 +10,8 @@ export const to = atom({
   },
 });
 
+export const email = atom({
+  key:"email",
+  default:""
+})
+

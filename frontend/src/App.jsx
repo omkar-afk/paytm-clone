@@ -1,8 +1,8 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
-import { Signup } from "./components/Signup"
-import { Send } from "./components/Send"
-import { Signin } from "./components/Signin"
-import { Dashboard } from "./components/Dashboard"
+import { Signup } from "./pages/Signup"
+import { Send } from "./pages/Send"
+import { Signin } from "./pages/Signin"
+import { Dashboard } from "./pages/Dashboard"
 function App() {
 
   return (
