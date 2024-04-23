@@ -44,7 +44,7 @@ export function Signup(){
                     <InputBox label="Email" placeholder="johndoe@example.com" id="email" type="email" setState={setEmail}/>
                     <InputBox label="password" placeholder="*********" id="pass" type="password" setState={setPass} />
                     <Button handleClick = {handleClick} text= "Signup"/>
-                    <BottomBar link="/signin" label="Signin" />
+                    <BottomBar link="/" label="Signin" />
             </div>
         </div>
 }
