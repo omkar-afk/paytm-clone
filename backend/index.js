@@ -3,7 +3,7 @@ const cors = require('cors')
 require('dotenv').config();
 
 
-const userRouter = require('./routes/userAuthRoutes');
+const userRouter = require('./routes/user');
 const accountRouter = require("./routes/account");
 const app = express();
 app.use(cors());

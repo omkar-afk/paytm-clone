@@ -3,6 +3,7 @@ const userRouter = express.Router();
 const {userSigninSchema,userSignupSchema} = require('../zod.js')
 const {userModel,balanceModel} = require('../mongoose.js')
 const jwt = require("jsonwebtoken");
+const authMiddleware = require('../middleware.js');
 userRouter.post('/save', async(req,res)=>{
     const userData = req.body;
     try{
@@ -47,6 +48,20 @@ userRouter.post('/check', async(req,res)=>{
             mssg:"invalid data inserted"
         })
     }
+})
+
+userRouter.get('/bulk',authMiddleware,async(req,res)=>{
+    const filter = req.query.filter|| "";
+    const users = await userModel.find({
+        $or : [
+            {'fname':{$regex: filter}},
+            {'lname':{$regex: filter}}
+        ]
+    })
+
+    res.send(
+        users.map( user=> ({username:user.username, fname: user.fname, lname: user.lname, id:user._id}))
+    )
 })
 
 module.exports = userRouter;

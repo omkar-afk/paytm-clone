@@ -16,23 +16,25 @@ accountRouter.get('/getbalance',async (req,res)=>{
 accountRouter.post('/transfer',async(req,res)=>{
     const from = req.userId;
     const to = req.body.to;
-    const amount = req.body.amount;
+    let amount = req.body.amount;
+    amount = parseInt(amount);
     const session = await mongoose.startSession();
     try{
         session.startTransaction();
-        const user = await balanceModel.findOne({userId:from});
+        const user = await balanceModel.findOne({userId:from}).session(session);
         if(amount > user.balance){
             res.json({
                 mssg:"insufficient balance"
             }) 
             await session.endSession();
+            return;
         }
         const newBalance = user.balance-amount;
         user.balance = newBalance;
-        await user.save();
-        const otherUser = await balanceModel.findOne({userId:to});
-        otherUser.balance = otherUser.balance +  amount;
-        await otherUser.save();
+        await user.save({ session: session });
+        const otherUser = await balanceModel.findOne({userId:to}).session(session);
+        otherUser.balance = otherUser.balance + amount;
+        await otherUser.save({ session: session });
         await session.commitTransaction();
         res.json({
             mssg:"Transfer successful"
@@ -40,6 +42,9 @@ accountRouter.post('/transfer',async(req,res)=>{
     }catch(e){
         console.log(e);
         await session.abortTransaction();
+        res.json({
+            mssg:"transfer nonsuccessful"
+        })
     }
     session.endSession();
 
