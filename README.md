@@ -47,10 +47,20 @@ clone the repo using - `https://github.com/omkar-afk/paytm-clone.git`
 
 ## 5. Screenshots
 
-![image](https://github.com/Ayush-Bulbule/Hack-O-Rama/assets/111428696/6b1e1a39-dcd4-4292-9b20-0ef74c54bc22)
+### 1. Signin
+![image](https://github.com/omkar-afk/paytm-clone/blob/main/frontend/src/utils/Signin.png)
+
+### 2. Signup
+![image](https://github.com/omkar-afk/paytm-clone/blob/main/frontend/src/utils/Signup.png)
+
+### 2. Dashboard
+![image](https://github.com/omkar-afk/paytm-clone/blob/main/frontend/src/utils/Dashboard.png)
+
+### 2. Send
+![image](https://github.com/omkar-afk/paytm-clone/blob/main/frontend/src/utils/Send.png)
 
 ## 7. Deployment
-Project is deployed at:[ https://kanban-board-ayush.vercel.app/](https://note-sync-techwing.vercel.app/) 
+Project is deployed at : [https://paytm-frontend-blond.vercel.app/]) 
   
    
 
