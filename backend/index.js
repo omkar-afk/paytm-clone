@@ -11,6 +11,12 @@ app.use(express.json());
 
 app.use('/api/v1/users',userRouter);
 app.use('/api/v1/account',accountRouter)
+
+app.get('/',(req,res)=>{
+    res.json({
+        "mssg":"hello"
+    })
+})
 const PORT = process.env.PORT|| 3000
 
 app.listen(PORT,()=>{
