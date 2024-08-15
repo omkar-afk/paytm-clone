@@ -17,11 +17,13 @@ app.get('/',(req,res)=>{
         "mssg":"hello"
     })
 })
-const PORT = process.env.PORT|| 3000
+const PORT = process.env.PORT|| 3001
 
 app.listen(PORT,()=>{
     console.log("runnning at server 3000.")
 })
+
+module.exports = app;
 
 
 
